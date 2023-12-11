@@ -1,0 +1,21 @@
+cat /data/bioinfo/xujh/chaifen_new/2023_12_7/index/sample.txt|while read id;
+do
+grep 'Most Popular Unknown Index Sequences' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/DemuxSummaryF1L1.txt -A 52 > /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/1.txt
+grep 'Most Popular Unknown Index Sequences' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/DemuxSummaryF1L2.txt -A 52 > /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/2.txt
+grep 'Most Popular Unknown Index Sequences' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/DemuxSummaryF1L3.txt -A 52 > /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/3.txt
+grep 'Most Popular Unknown Index Sequences' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/DemuxSummaryF1L4.txt -A 52 > /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/4.txt
+grep -v '###' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/1.txt >/data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/1_2.txt
+grep -v '###' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/2.txt >/data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/2_2.txt
+grep -v '###' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/3.txt >/data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/3_2.txt
+grep -v '###' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/4.txt >/data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/4_2.txt
+awk -v var=${id} '{print $1,$2,1,var}' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/1_2.txt > /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/1_3.txt
+awk -v var=${id} '{print $1,$2,2,var}' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/2_2.txt > /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/2_3.txt
+awk -v var=${id} '{print $1,$2,3,var}' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/3_2.txt > /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/3_3.txt
+awk -v var=${id} '{print $1,$2,4,var}' /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/4_2.txt > /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/4_3.txt
+cat /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/1_3.txt /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/2_3.txt /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/3_3.txt /data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/4_3.txt >/data/bioinfo/xujh/chaifen_new/2023_12_7/index/${id}/raw_data/Stats/undex_sum.txt
+done
+
+cat /data/bioinfo/xujh/chaifen_new/2023_12_7/index/*bp/raw_data/Stats/undex_sum.txt > /data/bioinfo/xujh/chaifen_new/2023_12_7/index/undex_sum.txt
+
+
+
